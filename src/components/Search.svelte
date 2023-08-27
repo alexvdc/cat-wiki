@@ -1,7 +1,7 @@
 <script>
   export let data;
 
-  let searchBreed = ""; // Variable pour stocker le texte de recherche entré par l'utilisateur
+  let searchBreed = ""; 
   let suggestions = [];
 
   function updateSuggestions() {
@@ -75,7 +75,6 @@
     padding: 1rem 0.5rem;
     border-radius: 1.5rem;
     top: 8rem;
-    /* height: 500px; */
     width: 100%;
     max-height: 220px;
     background-color: var(--white);
