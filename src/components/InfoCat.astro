@@ -1,0 +1,157 @@
+---
+import Stat from "./Stat.astro";
+
+const { breed, imageSrc } = Astro.props;
+---
+
+<section>
+  <div class="image">
+    <img src={imageSrc} alt={breed.name} />
+  </div>
+
+  <div class="content">
+    <div class="content__head">
+      <h3>{breed.name}</h3>
+      <p>
+        {breed.description}
+        <span>More info on
+          <a target="_blank" href={breed.wikipedia_url}> Wikipedia</a>
+        </span>
+      </p>
+    </div>
+    <div class="content__main">
+      <p><span>Temperament:</span> {breed.temperament}</p>
+      <p><span>Origin:</span> {breed.origin}</p>
+      <p><span>Life Span:</span> {breed.life_span} years</p>
+      <div>
+        <span>Adaptability:</span>
+        <Stat stat={breed.adaptability} />
+      </div>
+      <div>
+        <span>Affection Level:</span>
+        <Stat stat={breed.affection_level} />
+      </div>
+      <div>
+        <span>Child Friendly:</span>
+        <Stat stat={breed.child_friendly} />
+      </div>
+      <div>
+        <span>Grooming:</span>
+        <Stat stat={breed.grooming} />
+      </div>
+      <div>
+        <span>Intelligence:</span>
+        <Stat stat={breed.intelligence} />
+      </div>
+      <div>
+        <span>Health Issues:</span>
+        <Stat stat={breed.health_issues} />
+      </div>
+      <div>
+        <span>Social Needs:</span>
+        <Stat stat={breed.social_needs} />
+      </div>
+      <div>
+        <span>Stranger Friendly:</span>
+        <Stat stat={breed.stranger_friendly} />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  section {
+    display: flex;
+    gap: 7rem;
+    width: 100%;
+    // padding: 0 3.3rem;
+    margin: 0 auto;
+
+    @media screen and (max-width: 950px) {
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .image {
+      position: relative;
+      height: fit-content;
+      margin: 0 auto;
+
+      img {
+        z-index: 5;
+        width: clamp(220px, 25vw, 371px);
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 1.5rem;
+      }
+
+      &::before {
+        content: "";
+        background-color: var(--accent-2);
+        position: absolute;
+        height: 80%;
+        width: 40px;
+        border-radius: 0.8rem;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -0.8rem;
+        z-index: -1;
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+
+      &__head,
+      &__main {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1rem, 3vw, 2rem);
+      }
+
+      &__head {
+        h3 {
+          font-size: var(--fz-h3);
+          font-weight: 600;
+          color: var(--primary);
+        }
+
+        p {
+          font-size: var(--fz-a);
+          color: var(--primary);
+        }
+
+        span {
+          font-weight: 600;
+          a {
+            font-weight: 700;
+            color: var(--accent-2);
+            transition: color 0.3s ease-in-out;
+
+            &:hover {
+              color: var(--accent-1);
+            }
+          }
+        }
+      }
+
+      &__main {
+        margin: 1.5rem 0;
+        color: var(--black);
+        font-size: var(--fz-s);
+
+        span {
+          font-weight: 700;
+        }
+
+        div {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 515px;
+        }
+      }
+    }
+  }
+</style>

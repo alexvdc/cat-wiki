@@ -1,0 +1,170 @@
+---
+import Discover from "../components/Discover.astro";
+import HomeCatContainer from "../components/HomeCatContainer.astro";
+import Search from "../components/Search.svelte";
+import BaseLayout from "../layouts/BaseLayout.astro";
+const URL = "https://api.thecatapi.com/v1/breeds/";
+
+const response = await fetch(URL);
+const data = await response.json();
+---
+
+<BaseLayout title="Home">
+  <section>
+    <div class="intro">
+      <div class="intro__search">
+        <h1>Catwiki</h1>
+        <p>Get to know more about your cat breed</p>
+        <div class="search">
+          <Search data={data} client:only />
+        </div>
+      </div>
+    </div>
+    <div class="discover">
+      <a href="/top">Most Searched Breeds</a>
+      <div class="discover__more">
+        <h2>66+ Breeds For you to discover</h2>
+        <a href="/cats"
+          >see more
+          <span class="material-icons"> trending_flat</span>
+        </a>
+      </div>
+      <div class="discover__cats">
+        <Discover discover={data} className="first" />
+        <Discover discover={data} />
+        <Discover discover={data} />
+        <Discover discover={data} />
+      </div>
+    </div>
+  </section>
+
+  <HomeCatContainer />
+</BaseLayout>
+
+<style lang="scss">
+  section {
+    width: 100%;
+    margin: 0 auto;
+    min-width: 375px;
+  }
+  .intro {
+    position: relative;
+    padding: 7rem 6.5rem;
+    color: var(--white);
+    border-radius: 2rem 2rem 0 0;
+    background-image: url("/heroImage/HeroImagelg.png");
+    background-position: center;
+    background-size: cover;
+    z-index: 5;
+
+    @media screen and (max-width: 850px) {
+      padding: 3rem 2.5rem;
+      background-image: url("/heroImage/HeroImagemd.png");
+    }
+
+    @media screen and (max-width: 500px) {
+      padding: 1rem 1.5rem 0 1.5rem;
+      background-image: url("/heroImage/HeroImagesm.png");
+    }
+
+    &__search {
+      width: 50%;
+      max-width: 395px;
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+      font-size: var(--fz-h1);
+      font-family: var(--ff2);
+    }
+    p {
+      font-size: var(--fz-q);
+    }
+  }
+
+  .discover {
+    position: relative;
+    top: -5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    background-color: var(--secondary);
+    border-radius: 0 0 2rem 2rem;
+    color: var(--primary);
+    padding: 7rem 6.5rem;
+    z-index: 2;
+
+    @media screen and (max-width: 850px) {
+      padding: 6rem 2.5rem;
+      gap: 2rem;
+    }
+
+    @media screen and (max-width: 500px) {
+      padding: 6rem 1.5rem 0 1.5rem;
+    }
+
+    > a {
+      position: relative;
+      display: inline-block;
+      color: var(--primary);
+      font-size: var(--fz-a);
+      width: fit-content;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: var(--accent-2);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -0.8rem;
+        left: 0;
+        height: 3px;
+        width: 29%;
+        background-color: var(--accent-1);
+        border-radius: 1rem;
+      }
+    }
+
+    &__more {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      h2 {
+        font-size: var(--fz-h2);
+        max-width: 500px;
+      }
+      a {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 700;
+        font-size: var(--fz-a);
+        text-transform: uppercase;
+        color: var(--primary-light);
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+          color: var(--accent-2);
+        }
+
+        @media screen and (max-width: 850px) {
+          display: none;
+        }
+      }
+    }
+
+    &__cats {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+
+      @media screen and (max-width: 850px) {
+        gap: 1rem;
+        padding-bottom: 2.5rem;
+      }
+    }
+  }
+</style>

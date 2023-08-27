@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap");
+
+:root {
+  --ff1: "Montserrat", sans-serif;
+  --ff2: "Mystery Quest", cursive;
+
+  /* clamp de 64px a 14px */
+  --fz-h1: clamp(0.875rem, 8vw, 4rem);
+  /* clamp de 48px à 18px */
+  --fz-h2: clamp(1.125rem, 4vw, 3rem);
+  /* clamp de 36px à 16px */
+  --fz-h3: clamp(1.25rem, 4vw, 2.25rem);
+  /* clamp de 24px à 14px */
+  --fz-h4: clamp(0.8rem, 4vw, 2rem);
+  /* clamp de 18px à 12px */
+  --fz-a: clamp(0.75rem, 3vw, 1.125rem);
+  /* clamp de 24px à 10px */
+  --fz-q: clamp(0.625rem, 3vw, 1.5rem);
+  /* clamp de 16px à 10px */
+  --fz-s: clamp(0.75rem, 2vw, 1rem);
+
+  --primary: #291507;
+  --primary-light: #29150799;
+  --secondary: #e3e1dc;
+  --accent-1: #4d270c;
+  --accent-2: #dec68b;
+  --white: #fff;
+  --black: #000;
+  --gray: #9797971a;
+  --filled: #544439;
+  --unfilled: ##e0e0e0;
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: var(--ff1);
+}
+
+body {
+  max-width: 1248px;
+  width: 90%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+header {
+  padding-top: 2rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+h1 {
+  font-family: var(--ff2);
+  font-size: var(--fz-h1);
+}

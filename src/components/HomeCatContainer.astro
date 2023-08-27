@@ -1,0 +1,129 @@
+<section class="cat-container">
+  <div class="cat-container__content">
+    <h2>Why should you have a cat?</h2>
+    <p>
+      Having a cat around you can actually trigger the release of calming
+      chemicals in your body which lower your stress and anxiety leves
+    </p>
+    <a
+      target="_blank"
+      href="https://www.helpguide.org/articles/healthy-living/joys-of-owning-a-cat.htm"
+    >
+      read more
+      <span class="material-icons"> trending_flat</span>
+    </a>
+  </div>
+  <div class="cat-container__grid">
+    <img
+      class="grid-item1"
+      src="/mainImage/image1.png"
+      alt="Photo of a cat upon a shoulder of a woman giving his paw"
+    />
+    <img
+      class="grid-item2"
+      src="/mainImage/image2.png"
+      alt="Photo of a cat sleeping on a person"
+    />
+    <img
+      class="grid-item3"
+      src="/mainImage/image3.png"
+      alt="Photo of a cat in a yellow bag with a window"
+    />
+  </div>
+</section>
+
+<style lang="scss">
+  .cat-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 90%;
+
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+      gap: 0rem;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      max-width: 448px;
+      color: var(--primary);
+      font-size: 18px;
+
+      @media screen and (max-width: 900px) {
+        padding-bottom: 5rem;
+        gap: 1.5rem;
+      }
+
+      h2 {
+        position: relative;
+        font-size: 3rem;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -1.2rem;
+          left: 0;
+          height: 3px;
+          width: 15%;
+          background-color: var(--accent-1);
+          border-radius: 1rem;
+        }
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        width: fit-content;
+        color: var(--primary-light);
+        font-size: var(--fz-a);
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+        color: var(--accent-2);
+      }
+      }
+    }
+
+    &__grid  {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 540px;
+    width: 80%;
+    max-height: 489px;
+    margin-bottom: 6rem;
+
+    @media screen and (max-width: 600px) {
+      // margin-bottom: 2rem;
+      max-height: 308px;
+      gap: 1rem;
+    }
+
+    .grid-item1 {
+      grid-column: 2/4;
+      grid-row: 2/-1;
+      width: 100%;
+      // height: 100%;
+    }
+    .grid-item2 {
+      grid-column: 1/4;
+      grid-row: 1/2;
+      width: 100%;
+    }
+    .grid-item3 {
+      grid-column: 4/-1;
+      grid-row: 1/4;
+      width: 100%;
+      // height: 100%;
+    }
+  }
+  }
+</style>

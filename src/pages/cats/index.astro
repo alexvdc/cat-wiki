@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CardCat from "../../components/CardCat.astro";
+
+const URL = "https://api.thecatapi.com/v1/breeds/";
+const response = await fetch(URL);
+const data = await response.json();
+---
+
+<BaseLayout title="Cats">
+  <h2>All Breeds</h2>
+  <section>
+    {
+      data.map((breed) => (
+        <CardCat breed={breed} />
+      ))
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  h2 {
+    padding-bottom:1.5rem;
+    font-size: var(--fz-h2);
+  }
+  section {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 0 auto;
+  }
+</style>

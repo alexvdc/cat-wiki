@@ -1,0 +1,28 @@
+<footer>
+    <img src="/catwikilogo-white.svg" alt="logo">
+    <p>© created by <span>alexvdc</span> - devChallenge.io 2021</p>
+</footer>
+
+<style lang="scss">
+    footer {
+        color: var(--white);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--black);
+        padding: 2rem 5rem 2.5rem 5rem;
+        border-radius: 2rem 2rem 0 0;
+        font-size: var(--fz-a);
+
+        @media screen and (max-width: 850px) {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 2rem 2.5rem;
+            gap: 1.5rem;
+        }
+
+        span {
+            font-weight: 700;
+        }
+    }
+</style>

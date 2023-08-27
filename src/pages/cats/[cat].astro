@@ -1,0 +1,90 @@
+---
+import InfoCat from "../../components/InfoCat.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+export async function getStaticPaths() {
+  const response = await fetch("https://api.thecatapi.com/v1/breeds");
+  const breeds = await response.json();
+
+  return breeds.map((breed) => {
+    return {
+      params: { cat: breed.id },
+      props: { breed },
+    };
+  });
+}
+
+const { cat } = Astro.params;
+const { breed } = Astro.props;
+
+const URL = `https://api.thecatapi.com/v1/images/search?limit=10&order=ASC&breed_ids=${cat}`;
+const response = await fetch(URL);
+const data = await response.json();
+
+const dataSliced = data.slice(0, 8);
+
+const imageSrc = data[0] ? data[0].url : "/404cat.svg";
+---
+
+<BaseLayout title={breed.name}>
+  <InfoCat breed={breed} imageSrc={imageSrc} />
+
+  <div class="container">
+    {
+      data[0] && (
+        <>
+          <h3 class="container__title">Other photos</h3>
+          <div class="container__image">
+            {dataSliced.map((image) => (
+              <div class="image">
+                <img src={image.url} alt={breed.name} />
+              </div>
+            ))}
+          </div>
+        </>
+      )
+    }
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 1248px;
+    gap: 1rem;
+    margin: 0 auto;
+    padding-top: 3rem;
+    padding-bottom: 8rem;
+
+    &__title {
+      font-weight: 600;
+      color: var(--primary);
+      font-size: var(--fz-h3);
+      padding: 1rem 0;
+    }
+
+    &__image {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 100%;
+      gap: clamp(1.5rem, 5vw, 2.8rem);
+      margin-left: auto;
+    }
+  }
+
+  .image {
+    width: clamp(160px, 18vw, 278px);
+    aspect-ratio: 1;
+    border-radius: 1.5rem;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      transition: scale 0.5s ease-in-out;
+    }
+  }
+</style>

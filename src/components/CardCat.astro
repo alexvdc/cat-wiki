@@ -1,0 +1,35 @@
+---
+const { breed } = Astro.props;
+
+const URL = `https://api.thecatapi.com/v1/images/search?limit=10&order=ASC&breed_ids=${breed.id}`;
+const response = await fetch(URL);
+const data = await response.json();
+
+const imageSrc = data[0] ? data[0].url : "/404cat.svg";
+---
+
+<div>
+  <a href={`/cats/${breed.id}`}>
+    <img src={imageSrc} alt={breed.name} />
+    </a>
+  <h4>{breed.name}</h4>
+</div>
+
+<style>
+  img {
+    width: clamp(160px, 23vw, 270px);
+    height: clamp(160px, 23vw, 270px);
+    border-radius: 1.5rem;
+    object-fit: cover;
+    transition: filter 0.3s ease-in-out;
+  }
+
+  img:hover {
+    filter: grayscale(1);
+    cursor: pointer;
+  }
+
+  h4 {
+    font-size: var(--fz-a);
+  }
+</style>

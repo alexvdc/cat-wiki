@@ -1,0 +1,29 @@
+---
+const {stat} = Astro.props
+---
+
+<div class="stats">
+    <span class={stat > 0 ? "is-filled" : ""}></span>
+    <span class={stat > 1 ? "is-filled" : ""}></span>
+    <span class={stat > 2 ? "is-filled" : ""}></span>
+    <span class={stat > 3 ? "is-filled" : ""}></span>
+    <span class={stat > 4 ? "is-filled" : ""}></span>
+</div>
+
+<style>
+    .stats {
+        display: flex;
+        gap: 5px;
+    }
+
+    .is-filled {
+        background-color: #544439;
+    }
+
+    span {
+        width: clamp(35px, 3vw, 60px);
+        height: 12px;
+        background-color: #e0e0e0;
+        border-radius: 2rem;
+    }
+</style>

@@ -1,0 +1,42 @@
+---
+import TopCat from "../components/TopCat.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const URL = "https://api.thecatapi.com/v1/breeds";
+const response = await fetch(URL);
+const data = await response.json();
+
+const popular = [];
+data
+  .filter(
+    (breed) =>
+      breed.social_needs === 5 &&
+      breed.adaptability === 5 &&
+      breed.affection_level === 5 &&
+      breed.intelligence >= 4 &&
+      breed.stranger_friendly >= 3 &&
+      breed.grooming <= 2 &&
+      breed.health_issues <= 3
+  )
+  .forEach((breed) => {
+    popular.push(breed);
+  });
+
+const topTen = popular.slice(0, 10);
+---
+
+<BaseLayout title="Top">
+  <section>
+    <h3>Top 10 most searched breeds</h3>
+    {topTen.map((breed, index) => <TopCat breed={breed} key={index} />)}
+  </section>
+</BaseLayout>
+
+<style>
+  h3 {
+    font-size: var(--fz-h3);
+    font-weight: 700;
+    text-align: left;
+    padding-bottom:2rem
+  }
+</style>

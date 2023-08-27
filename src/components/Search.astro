@@ -1,0 +1,47 @@
+---
+const {data} = Astro.props
+data.map((breed) => console.log(breed.name))
+
+---
+
+<form>
+  <input type="text" placeholder="Enter your breed" />
+  <span class="material-icons">
+    search
+  </span>
+</form>
+
+<style lang="scss">
+  form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 3.5rem 0;
+    // width: 394px;
+
+
+    input {
+      position: relative;
+      padding: 1rem 1.5rem;
+      border-radius: 2rem;
+      border: none;
+      outline: none;
+      width: 100%;
+      font-size: 18px;
+      font-family: var(--ff1);
+      color: var(--primary);
+
+      &::placeholder {
+        opacity: 1;
+      }
+    }
+
+    .material-icons {
+      position: absolute;
+      right: 1rem;
+      width: 24px;
+
+      color: var(--primary);
+    }
+  }
+</style>
