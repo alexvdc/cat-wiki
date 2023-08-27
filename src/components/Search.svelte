@@ -100,5 +100,9 @@
     label {
       padding: 1.5rem 0;
     }
+
+    ul {
+      top: 5rem;
+    }
   }
 </style>
