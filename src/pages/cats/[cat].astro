@@ -57,6 +57,10 @@ const imageSrc = data[0] ? data[0].url : "/404cat.svg";
     padding-top: 3rem;
     padding-bottom: 8rem;
 
+    @media screen and (max-width: 900px) {
+      padding-bottom: 5rem;
+    }
+
     &__title {
       font-weight: 600;
       color: var(--primary);
@@ -75,10 +79,11 @@ const imageSrc = data[0] ? data[0].url : "/404cat.svg";
   }
 
   .image {
-    width: clamp(160px, 18vw, 278px);
+    width: clamp(135px, 18vw, 278px);
     aspect-ratio: 1;
     border-radius: 1.5rem;
     overflow: hidden;
+    margin: 0 auto;
 
     img {
       object-fit: cover;

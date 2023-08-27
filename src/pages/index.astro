@@ -45,26 +45,25 @@ const data = await response.json();
   section {
     width: 100%;
     margin: 0 auto;
-    min-width: 375px;
   }
   .intro {
     position: relative;
     padding: 7rem 6.5rem;
     color: var(--white);
     border-radius: 2rem 2rem 0 0;
-    background-image: url("/heroImage/HeroImagelg.png");
+    background-image: url("/heroImage/HeroImagelg.webp");
     background-position: center;
     background-size: cover;
     z-index: 5;
 
     @media screen and (max-width: 850px) {
       padding: 3rem 2.5rem;
-      background-image: url("/heroImage/HeroImagemd.png");
+      background-image: url("/heroImage/HeroImagemd.webp");
     }
 
     @media screen and (max-width: 500px) {
       padding: 1rem 1.5rem 0 1.5rem;
-      background-image: url("/heroImage/HeroImagesm.png");
+      background-image: url("/heroImage/HeroImagesm.webp");
     }
 
     &__search {
@@ -159,11 +158,11 @@ const data = await response.json();
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 2rem;
+      gap: clamp(0.5rem, 3vw, 2rem);
 
       @media screen and (max-width: 850px) {
-        gap: 1rem;
-        padding-bottom: 2.5rem;
+        // gap: 1rem;
+        padding-bottom: 1.5rem;
       }
     }
   }

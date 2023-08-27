@@ -85,14 +85,15 @@
     display: inline-block;
     color: var(--black);
     padding: 1rem 0.5rem;
-    font-size: 18px;
+    font-size: var(--fz-a);
     width: 100%;
     border-radius: 0.75rem;
-    transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   }
 
   a:hover {
     background-color: var(--gray);
+    color: var(--accent-2);
   }
 
   @media (max-width: 768px) {
