@@ -5,13 +5,13 @@ const { breed, imageSrc } = Astro.props;
 ---
 
 <section>
-  <div class="image">
+  <div class="image" transition:name={breed.name} >
     <img src={imageSrc} alt={breed.name} />
   </div>
 
   <div class="content">
     <div class="content__head">
-      <h3>{breed.name}</h3>
+      <h3 transition:name={`cat ${breed.id}`}>{breed.name}</h3>
       <p>
         {breed.description}
         <span>More info on

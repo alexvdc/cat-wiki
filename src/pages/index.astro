@@ -16,7 +16,7 @@ const data = await response.json();
         <h1>Catwiki</h1>
         <p>Get to know more about your cat breed</p>
         <div class="search">
-          <Search data={data} client:only />
+          <Search data={data} client:load />
         </div>
       </div>
     </div>
@@ -149,7 +149,10 @@ const data = await response.json();
         }
 
         @media screen and (max-width: 850px) {
-          display: none;
+          position: absolute;
+          bottom: 2rem;
+          left: 50%;
+          transform: translateX(-50%);
         }
       }
     }
